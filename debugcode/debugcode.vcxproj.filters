@@ -15,45 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="configs.h">
+    <ClInclude Include="src\activations.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="src\configs.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="types.h">
+    <ClInclude Include="src\constants.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="top.h">
+    <ClInclude Include="src\fc.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="fc.h">
+    <ClInclude Include="src\lstm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="fc.cpp">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="lstm.h">
+    <ClInclude Include="src\top.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="activations.h">
+    <ClInclude Include="src\types.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="testmain.cpp">
+    <ClCompile Include="src\activations.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="top.cpp">
+    <ClCompile Include="src\constants.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="lstm.cpp">
+    <ClCompile Include="src\fc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="constants.cpp">
+    <ClCompile Include="src\lstm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="activations.cpp">
+    <ClCompile Include="src\testmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\top.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

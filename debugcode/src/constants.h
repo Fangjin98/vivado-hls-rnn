@@ -1,15 +1,12 @@
 #include "types.h"
 
-#define FC_TILE_SIZE 4
-
-#define FC_BATCH_SIZE2 1
-#define FC_INPUT_SIZE2 16
-#define FC_OUTPUT_SIZE2 1
-
 #define FC_BATCH_SIZE1 1
 #define FC_INPUT_SIZE1 64
 #define FC_OUTPUT_SIZE1 16
 
+#define FC_BATCH_SIZE2 1
+#define FC_INPUT_SIZE2 16
+#define FC_OUTPUT_SIZE2 1
 
 extern FDATA_T fc_input_feature_map_1[FC_BATCH_SIZE1*FC_INPUT_SIZE1];
 extern FDATA_T fc_output_feature_map_1[FC_BATCH_SIZE1*FC_OUTPUT_SIZE1];
@@ -27,7 +24,7 @@ extern FDATA_T fc_bias_2[FC_OUTPUT_SIZE2];
 #define LSTM_OUTPUT_SIZE1 128
 
 #define LSTM_BATCH_SIZE2 1
-#define LSTM_INPUT_SIZE2 4
+#define LSTM_INPUT_SIZE2 128
 #define LSTM_OUTPUT_SIZE2 64
 
 extern FDATA_T lstm_input_feature_map_1[LSTM_BATCH_SIZE1*LSTM_INPUT_SIZE1];

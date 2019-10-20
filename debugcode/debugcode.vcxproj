@@ -18,6 +18,23 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\activations.h" />
+    <ClInclude Include="src\configs.h" />
+    <ClInclude Include="src\constants.h" />
+    <ClInclude Include="src\fc.h" />
+    <ClInclude Include="src\lstm.h" />
+    <ClInclude Include="src\top.h" />
+    <ClInclude Include="src\types.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\activations.cpp" />
+    <ClCompile Include="src\constants.cpp" />
+    <ClCompile Include="src\fc.cpp" />
+    <ClCompile Include="src\lstm.cpp" />
+    <ClCompile Include="src\testmain.cpp" />
+    <ClCompile Include="src\top.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3B341586-04C9-4FAF-8D50-3789FB4541D4}</ProjectGuid>
@@ -114,23 +131,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="activations.h" />
-    <ClInclude Include="configs.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="fc.h" />
-    <ClInclude Include="fc.cpp" />
-    <ClInclude Include="lstm.h" />
-    <ClInclude Include="top.h" />
-    <ClInclude Include="types.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="activations.cpp" />
-    <ClCompile Include="constants.cpp" />
-    <ClCompile Include="lstm.cpp" />
-    <ClCompile Include="testmain.cpp" />
-    <ClCompile Include="top.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
