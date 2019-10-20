@@ -47,7 +47,7 @@ EACH_OUT_FM:
 			kernel_reg[i] = fc_kernel_1[kernel_offset+i];
 		}
 
-		//computer
+		//compute
 		for (LDATA_T i = 0; i < FC_BATCH_SIZE1; i++) {
 			FDATA_T tmp = 0;
 			for (LDATA_T j = 0; j < FC_BATCH_SIZE1; j++) {
@@ -66,12 +66,13 @@ EACH_OUT_FM:
 }
 
 
-void fc_16_1(FDATA_T input_feature_map[FC_BATCH_SIZE1*FC_INPUT_SIZE1],
-	FDATA_T output_feature_map[FC_BATCH_SIZE1*FC_OUTPUT_SIZE1]) {
+void fc_16_1(
+	FDATA_T input_feature_map[FC_BATCH_SIZE2*FC_INPUT_SIZE2],
+	FDATA_T output_feature_map[FC_BATCH_SIZE2*FC_OUTPUT_SIZE2]) {
 
-	FDATA_T input_feature_map_reg[FC_BATCH_SIZE1*FC_INPUT_SIZE1];
-	FDATA_T output_feature_map_reg[FC_BATCH_SIZE1];
-	FDATA_T kernel_reg[FC_INPUT_SIZE1];
+	FDATA_T input_feature_map_reg[FC_BATCH_SIZE2*FC_INPUT_SIZE2];
+	FDATA_T output_feature_map_reg[FC_BATCH_SIZE2];
+	FDATA_T kernel_reg[FC_INPUT_SIZE2];
 
 	//#pragma HLS ARRAY_PARTITION variable=input_feature_map_reg \
 	//    dim=2 cyclic factor=32
@@ -82,42 +83,42 @@ void fc_16_1(FDATA_T input_feature_map[FC_BATCH_SIZE1*FC_INPUT_SIZE1],
 	//#pragma HLS ARRAY_PARTITION variable=kernel_reg dim=1 cyclic factor=32
 
 		//load input feature map
-	for (LDATA_T batch_iter = 0; batch_iter < FC_BATCH_SIZE1; batch_iter++) {
-		for (LDATA_T i = 0; i < FC_INPUT_SIZE1; i++)
+	for (LDATA_T batch_iter = 0; batch_iter < FC_BATCH_SIZE2; batch_iter++) {
+		for (LDATA_T i = 0; i < FC_INPUT_SIZE2; i++)
 		{
 #pragma HLS PIPELINE
-			input_feature_map_reg[batch_iter*FC_INPUT_SIZE1 + i] =
-				input_feature_map[batch_iter*FC_INPUT_SIZE1 + i];
+			input_feature_map_reg[batch_iter*FC_INPUT_SIZE2 + i] =
+				input_feature_map[batch_iter*FC_INPUT_SIZE2 + i];
 		}
 	}
 
 EACH_OUT_FM:
 	for (LDATA_T output_feature_map_index = 0;
-		output_feature_map_index < FC_OUTPUT_SIZE1;
+		output_feature_map_index < FC_OUTPUT_SIZE2;
 		output_feature_map_index++) {
 #pragma HLS DATAFLOW
 
 		//load kernel
-		LDATA_T kernel_offset = output_feature_map_index * FC_INPUT_SIZE1;
-		for (int i = 0; i < FC_INPUT_SIZE1; i++) {
+		LDATA_T kernel_offset = output_feature_map_index * FC_INPUT_SIZE2;
+		for (int i = 0; i < FC_INPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			kernel_reg[i] = fc_kernel_1[kernel_offset + i];
+			kernel_reg[i] = fc_kernel_2[kernel_offset + i];
 		}
 
-		//computer
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE1; i++) {
+		//compute
+		for (LDATA_T i = 0; i < FC_BATCH_SIZE2; i++) {
 			FDATA_T tmp = 0;
-			for (LDATA_T j = 0; j < FC_BATCH_SIZE1; j++) {
-				tmp += (kernel_reg[j] * input_feature_map_reg[i*FC_INPUT_SIZE1 + j]);
+			for (LDATA_T j = 0; j < FC_BATCH_SIZE2; j++) {
+				tmp += (kernel_reg[j] * input_feature_map_reg[i*FC_INPUT_SIZE2 + j]);
 			}
 			output_feature_map_reg[i] = tmp;
 		}
 
-		LDATA_T output_feature_map_offset = output_feature_map_index * FC_BATCH_SIZE1;
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE1; i++) {
+		LDATA_T output_feature_map_offset = output_feature_map_index * FC_BATCH_SIZE2;
+		for (LDATA_T i = 0; i < FC_BATCH_SIZE2; i++) {
 #pragma HLS PIPELINE
 			output_feature_map[i + output_feature_map_offset] =
-				fc_bias_1[output_feature_map_index] + output_feature_map_reg[i];
+				fc_bias_2[output_feature_map_index] + output_feature_map_reg[i];
 		}
 	}
 }

@@ -15,6 +15,12 @@ void lstm_128(
 	FDATA_T *memory_cell,
 	FDATA_T *hidden_state
 );
-void lstm_64();
+void lstm_64() {
+	FDATA_T *input_feature_map,
+	FDATA_T *prev_hidden_state,
+	FDATA_T *prev_memory_cell,
+	FDATA_T *memory_cell,
+	FDATA_T *hidden_state
+};
 
 #endif
