@@ -35,6 +35,28 @@
     <ClCompile Include="src\testmain.cpp" />
     <ClCompile Include="src\top.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\dense1_bias" />
+    <None Include="res\dense1_kernel" />
+    <None Include="res\dense2_bias" />
+    <None Include="res\dense2_kernel" />
+    <None Include="res\lstm1_bias_c" />
+    <None Include="res\lstm1_bias_f" />
+    <None Include="res\lstm1_bias_i" />
+    <None Include="res\lstm1_bias_o" />
+    <None Include="res\lstm1_kernel_c" />
+    <None Include="res\lstm1_kernel_f" />
+    <None Include="res\lstm1_kernel_i" />
+    <None Include="res\lstm1_kernel_o" />
+    <None Include="res\lstm2_bias_c" />
+    <None Include="res\lstm2_bias_f" />
+    <None Include="res\lstm2_bias_i" />
+    <None Include="res\lstm2_bias_o" />
+    <None Include="res\lstm2_kernel_c" />
+    <None Include="res\lstm2_kernel_f" />
+    <None Include="res\lstm2_kernel_i" />
+    <None Include="res\lstm2_kernel_o" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{3B341586-04C9-4FAF-8D50-3789FB4541D4}</ProjectGuid>

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="资源文件\weights">
+      <UniqueIdentifier>{26569f7e-7680-4088-beaa-56bed2f88d8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\activations.h">
@@ -56,5 +59,67 @@
     <ClCompile Include="src\top.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\dense1_bias">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\dense1_kernel">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\dense2_bias">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\dense2_kernel">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_bias_c">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_bias_f">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_bias_i">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_bias_o">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_kernel_c">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_kernel_f">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_kernel_i">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm1_kernel_o">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_bias_c">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_bias_f">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_bias_i">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_bias_o">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_kernel_c">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_kernel_f">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_kernel_i">
+      <Filter>资源文件\weights</Filter>
+    </None>
+    <None Include="res\lstm2_kernel_o">
+      <Filter>资源文件\weights</Filter>
+    </None>
   </ItemGroup>
 </Project>
