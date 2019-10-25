@@ -8,11 +8,11 @@
 //#pragma SDS data zero_copy(output_feature_map[0: BATCH_SIZE * FC_OUTPUT_SIZE])
 
 void fc_64(
-	FDATA_T input_feature_map[FC_BATCH_SIZE1*FC_INPUT_SIZE1],
-	FDATA_T output_feature_map[FC_BATCH_SIZE1*FC_OUTPUT_SIZE1]) {
+	FDATA_T input_feature_map[FC_INPUT_SIZE1],
+	FDATA_T output_feature_map[FC_OUTPUT_SIZE1]) {
 
-	FDATA_T input_feature_map_reg[FC_BATCH_SIZE1*FC_INPUT_SIZE1];
-	FDATA_T output_feature_map_reg[FC_BATCH_SIZE1];
+	FDATA_T input_feature_map_reg[FC_INPUT_SIZE1];
+	FDATA_T output_feature_map_reg;
 	FDATA_T kernel_reg[FC_INPUT_SIZE1];
 
 //#pragma HLS ARRAY_PARTITION variable=input_feature_map_reg \
@@ -24,13 +24,11 @@ void fc_64(
 //#pragma HLS ARRAY_PARTITION variable=kernel_reg dim=1 cyclic factor=32
 
 	//load input feature map
-	for (LDATA_T batch_iter = 0; batch_iter < FC_BATCH_SIZE1; batch_iter++) {
-		for (LDATA_T i = 0; i < FC_INPUT_SIZE1; i++)
-		{
+	for (LDATA_T i = 0; i < FC_INPUT_SIZE1; i++)
+	{
 #pragma HLS PIPELINE
-			input_feature_map_reg[batch_iter*FC_INPUT_SIZE1 + i] =
-				input_feature_map[batch_iter*FC_INPUT_SIZE1 + i];
-		}
+		input_feature_map_reg[i] =
+			input_feature_map[i];
 	}
 
 EACH_OUT_FM:
@@ -47,30 +45,27 @@ EACH_OUT_FM:
 		}
 
 		//compute
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE1; i++) {
-			FDATA_T tmp = 0;
-			for (LDATA_T j = 0; j < FC_BATCH_SIZE1; j++) {
-				tmp += (kernel_reg[j] * input_feature_map_reg[i*FC_INPUT_SIZE1 + j]);
-			}
-			output_feature_map_reg[i] = tmp;
+		FDATA_T tmp = 0;
+		for (int j = 0; j < FC_INPUT_SIZE1; j++) {
+			tmp += (kernel_reg[j] * input_feature_map_reg[j]);
 		}
+		output_feature_map_reg = tmp;
 
-		LDATA_T output_feature_map_offset = output_feature_map_index * FC_BATCH_SIZE1;
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE1; i++) {
-#pragma HLS PIPELINE
-			output_feature_map[i+output_feature_map_offset] =
-				fc_bias_1[output_feature_map_index] + output_feature_map_reg[i];
-		}
+		output_feature_map_reg += fc_bias_1[output_feature_map_index];
+
+		//relu
+		output_feature_map[output_feature_map_index] =
+			(output_feature_map_reg > 0) ? output_feature_map_reg : 0;
 	}
 }
 
 
 void fc_16(
-	FDATA_T input_feature_map[FC_BATCH_SIZE2*FC_INPUT_SIZE2],
-	FDATA_T output_feature_map[FC_BATCH_SIZE2*FC_OUTPUT_SIZE2]) {
+	FDATA_T input_feature_map[FC_INPUT_SIZE2],
+	FDATA_T &output_feature_map) {
 
-	FDATA_T input_feature_map_reg[FC_BATCH_SIZE2*FC_INPUT_SIZE2];
-	FDATA_T output_feature_map_reg[FC_BATCH_SIZE2];
+	FDATA_T input_feature_map_reg[FC_INPUT_SIZE2];
+	FDATA_T output_feature_map_reg;
 	FDATA_T kernel_reg[FC_INPUT_SIZE2];
 
 	//#pragma HLS ARRAY_PARTITION variable=input_feature_map_reg \
@@ -82,42 +77,32 @@ void fc_16(
 	//#pragma HLS ARRAY_PARTITION variable=kernel_reg dim=1 cyclic factor=32
 
 		//load input feature map
-	for (LDATA_T batch_iter = 0; batch_iter < FC_BATCH_SIZE2; batch_iter++) {
-		for (LDATA_T i = 0; i < FC_INPUT_SIZE2; i++)
-		{
+	
+	for (int i = 0; i < FC_INPUT_SIZE2; i++)
+	{
 #pragma HLS PIPELINE
-			input_feature_map_reg[batch_iter*FC_INPUT_SIZE2 + i] =
-				input_feature_map[batch_iter*FC_INPUT_SIZE2 + i];
-		}
+		input_feature_map_reg[i] = input_feature_map[i];
 	}
 
 EACH_OUT_FM:
-	for (LDATA_T output_feature_map_index = 0;
-		output_feature_map_index < FC_OUTPUT_SIZE2;
-		output_feature_map_index++) {
 #pragma HLS DATAFLOW
 
 		//load kernel
-		LDATA_T kernel_offset = output_feature_map_index * FC_INPUT_SIZE2;
-		for (int i = 0; i < FC_INPUT_SIZE2; i++) {
+	for (int i = 0; i < FC_INPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			kernel_reg[i] = fc_kernel_2[kernel_offset + i];
-		}
-
-		//compute
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE2; i++) {
-			FDATA_T tmp = 0;
-			for (LDATA_T j = 0; j < FC_BATCH_SIZE2; j++) {
-				tmp += (kernel_reg[j] * input_feature_map_reg[i*FC_INPUT_SIZE2 + j]);
-			}
-			output_feature_map_reg[i] = tmp;
-		}
-
-		LDATA_T output_feature_map_offset = output_feature_map_index * FC_BATCH_SIZE2;
-		for (LDATA_T i = 0; i < FC_BATCH_SIZE2; i++) {
-#pragma HLS PIPELINE
-			output_feature_map[i + output_feature_map_offset] =
-				fc_bias_2[output_feature_map_index] + output_feature_map_reg[i];
-		}
+		kernel_reg[i] = fc_kernel_2[i];
 	}
+
+	//compute
+	FDATA_T tmp = 0;
+	for (int j = 0; j <FC_INPUT_SIZE2; j++) {
+		tmp += (kernel_reg[j] * input_feature_map_reg[j]);
+	}
+	output_feature_map_reg= tmp;
+
+	output_feature_map_reg = fc_bias_2 + output_feature_map_reg;
+
+	//relu
+	output_feature_map =
+		(output_feature_map_reg > 0) ? output_feature_map_reg : 0;
 }

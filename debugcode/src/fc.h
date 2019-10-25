@@ -7,7 +7,7 @@ void fc_64(
 
 void fc_16(
 	FDATA_T *input_feature_map,
-	FDATA_T *output_feature_map);
+	FDATA_T &output_feature_map);
 
 #endif
 

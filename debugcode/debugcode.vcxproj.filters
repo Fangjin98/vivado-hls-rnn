@@ -121,5 +121,11 @@
     <None Include="res\lstm2_kernel_o">
       <Filter>资源文件\weights</Filter>
     </None>
+    <None Include="res\input">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

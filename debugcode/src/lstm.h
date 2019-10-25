@@ -3,7 +3,7 @@
 #include"types.h"
 
 void vectorProduct(
-	FDATA_T *weight_matrix,
+	const FDATA_T *weight_matrix,
 	FDATA_T *input,
 	int dim1,
 	int dim2,
@@ -12,16 +12,12 @@ void vectorProduct(
 void lstm_128(
 	FDATA_T *input_feature_map,
 	FDATA_T *prev_hidden_state,
-	FDATA_T *prev_memory_cell,
-	FDATA_T *memory_cell,
 	FDATA_T *hidden_state
 );
 
 void lstm_64(
 	FDATA_T *input_feature_map,
 	FDATA_T *prev_hidden_state,
-	FDATA_T *prev_memory_cell,
-	FDATA_T *memory_cell,
 	FDATA_T *hidden_state);
 
 #endif
