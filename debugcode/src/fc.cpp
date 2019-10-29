@@ -1,5 +1,7 @@
 #include "fc.h"
 #include"constants.h"
+#include"activations.h"
+
 //#pragma SDS data zero_copy(fc_kernel[0: FC_OUTPUT_SIZE * FC_INPUT_SIZE])
 //#pragma SDS data zero_copy(fc_bias[0: FC_OUTPUT_SIZE])
 //
@@ -53,9 +55,9 @@ EACH_OUT_FM:
 
 		output_feature_map_reg += fc_bias_1[output_feature_map_index];
 
-		//relu
-		output_feature_map[output_feature_map_index] =
-			(output_feature_map_reg > 0) ? output_feature_map_reg : 0;
+		//output_feature_map[output_feature_map_index]=m_relu(output_feature_map_reg);
+
+		output_feature_map[output_feature_map_index] = output_feature_map_reg;
 	}
 }
 
@@ -76,7 +78,6 @@ void fc_16(
 	//    dim=1 cyclic factor=32
 	//#pragma HLS ARRAY_PARTITION variable=kernel_reg dim=1 cyclic factor=32
 
-		//load input feature map
 	
 	for (int i = 0; i < FC_INPUT_SIZE2; i++)
 	{
@@ -102,7 +103,5 @@ EACH_OUT_FM:
 
 	output_feature_map_reg = fc_bias_2 + output_feature_map_reg;
 
-	//relu
-	output_feature_map =
-		(output_feature_map_reg > 0) ? output_feature_map_reg : 0;
+	output_feature_map=m_relu(output_feature_map_reg);
 }

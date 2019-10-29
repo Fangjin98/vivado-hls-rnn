@@ -1,10 +1,16 @@
 #include<iostream>
+#include<string>
 #include"constants.h"
 #include"top.h"
+#include"test_data.h"
+#include"fileOperator.h"
+
 
 void generateTestData();
 //void generateFcTestData();
 void generateLstmTestData();
+
+FDATA_T resTmpArray[TEST_DATA_SIZE];
 
 int main(){
     //generateTestData();
@@ -37,8 +43,12 @@ int main(){
 			lstm_prev_hidden_1,
 			lstm_prev_hidden_2,
 			fc_output_feature_map_2);
-		std::cout << fc_output_feature_map_2<<std::endl;
+		//std::cout<<fc_output_feature_map_2<<std::endl;
+		resTmpArray[i]=fc_output_feature_map_2;
 	}
+	char fileName[100] = "fixed_output";
+	writeArrayIntoFile(fileName, resTmpArray, TEST_DATA_SIZE);
+	
     return 0;
 }
 
@@ -54,3 +64,4 @@ void generateLstmTestData() {
 		}
 	}
 }
+
