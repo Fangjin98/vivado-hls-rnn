@@ -5,6 +5,8 @@ void top(
 	FDATA_T *input,
 	FDATA_T *lstm_prev_hidden_1,
 	FDATA_T *lstm_prev_hidden_2,
+	FDATA_T *lstm_hidden_1,
+	FDATA_T *lstm_hidden_2,
 	FDATA_T &output
 );
 void load_fc_input(

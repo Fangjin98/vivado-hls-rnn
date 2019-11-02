@@ -1,5 +1,5 @@
 #include "fc.h"
-#include"constants.h"
+#include"floatConstants.h"
 #include"activations.h"
 
 //#pragma SDS data zero_copy(fc_kernel[0: FC_OUTPUT_SIZE * FC_INPUT_SIZE])
@@ -51,9 +51,7 @@ EACH_OUT_FM:
 		for (int j = 0; j < FC_INPUT_SIZE1; j++) {
 			tmp += (kernel_reg[j] * input_feature_map_reg[j]);
 		}
-		output_feature_map_reg = tmp;
-
-		output_feature_map_reg += fc_bias_1[output_feature_map_index];
+		output_feature_map_reg = tmp + fc_bias_1[output_feature_map_index];
 
 		//output_feature_map[output_feature_map_index]=m_relu(output_feature_map_reg);
 
@@ -99,9 +97,7 @@ EACH_OUT_FM:
 	for (int j = 0; j <FC_INPUT_SIZE2; j++) {
 		tmp += (kernel_reg[j] * input_feature_map_reg[j]);
 	}
-	output_feature_map_reg= tmp;
-
-	output_feature_map_reg = fc_bias_2 + output_feature_map_reg;
-
-	output_feature_map=m_relu(output_feature_map_reg);
+	output_feature_map_reg = m_relu(tmp + fc_bias_2);
+	//output_feature_map_reg = tmp + fc_bias_2;
+	output_feature_map = output_feature_map_reg;
 }

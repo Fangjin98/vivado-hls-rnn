@@ -21,12 +21,6 @@
     <ClInclude Include="src\activations.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\configs.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\constants.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\fc.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -45,12 +39,12 @@
     <ClInclude Include="src\test_data.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\floatConstants.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\activations.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\constants.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\fc.cpp">
@@ -69,6 +63,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\test_data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\floatConstants.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
