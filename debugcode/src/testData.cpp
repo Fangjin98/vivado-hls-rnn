@@ -1,4 +1,4 @@
-#include"test_data.h"
+#include"testData.h"
 
 const FDATA_T test_data_output[TEST_DATA_SIZE] = {
 	0.096696265,
@@ -1363,7 +1363,6 @@ const FDATA_T test_data_output[TEST_DATA_SIZE] = {
 0.492216051,
 0.492226720
 };
-
 const FDATA_T test_data_input[TEST_DATA_SIZE*TEST_DATA_STEP*TEST_DATA_DIM] = {
 	0.179239696,0.163532825,0.164757710,0.163531773,
 1.000000000,1.000000000,1.000000000,1.000000000,

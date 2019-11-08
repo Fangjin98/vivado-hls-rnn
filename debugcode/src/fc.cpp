@@ -1,7 +1,5 @@
 #include "fc.h"
-#include"floatConstants.h"
-#include"activations.h"
-
+#include"constants.h"
 //#pragma SDS data zero_copy(fc_kernel[0: FC_OUTPUT_SIZE * FC_INPUT_SIZE])
 //#pragma SDS data zero_copy(fc_bias[0: FC_OUTPUT_SIZE])
 //
@@ -51,11 +49,15 @@ EACH_OUT_FM:
 		for (int j = 0; j < FC_INPUT_SIZE1; j++) {
 			tmp += (kernel_reg[j] * input_feature_map_reg[j]);
 		}
-		output_feature_map_reg = tmp + fc_bias_1[output_feature_map_index];
+		output_feature_map_reg = tmp;
 
-		//output_feature_map[output_feature_map_index]=m_relu(output_feature_map_reg);
+		output_feature_map_reg += fc_bias_1[output_feature_map_index];
 
-		output_feature_map[output_feature_map_index] = output_feature_map_reg;
+		//relu
+		/*output_feature_map[output_feature_map_index] =
+			(output_feature_map_reg > 0) ? output_feature_map_reg : 0;*/
+
+		output_feature_map[output_feature_map_index] =output_feature_map_reg;
 	}
 }
 
@@ -76,6 +78,7 @@ void fc_16(
 	//    dim=1 cyclic factor=32
 	//#pragma HLS ARRAY_PARTITION variable=kernel_reg dim=1 cyclic factor=32
 
+		//load input feature map
 	
 	for (int i = 0; i < FC_INPUT_SIZE2; i++)
 	{
@@ -97,7 +100,11 @@ EACH_OUT_FM:
 	for (int j = 0; j <FC_INPUT_SIZE2; j++) {
 		tmp += (kernel_reg[j] * input_feature_map_reg[j]);
 	}
-	output_feature_map_reg = m_relu(tmp + fc_bias_2);
-	//output_feature_map_reg = tmp + fc_bias_2;
-	output_feature_map = output_feature_map_reg;
+	output_feature_map_reg= tmp;
+
+	output_feature_map_reg = fc_bias_2 + output_feature_map_reg;
+
+	//relu
+	output_feature_map =
+		(output_feature_map_reg > 0) ? output_feature_map_reg : 0;
 }

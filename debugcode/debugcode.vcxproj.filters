@@ -36,10 +36,10 @@
     <ClInclude Include="src\fileOperator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\test_data.h">
+    <ClInclude Include="src\constants.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\floatConstants.h">
+    <ClInclude Include="src\testData.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -62,10 +62,10 @@
     <ClCompile Include="src\fileOperator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test_data.cpp">
+    <ClCompile Include="src\constants.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\floatConstants.cpp">
+    <ClCompile Include="src\testData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

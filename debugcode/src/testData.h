@@ -9,4 +9,5 @@
 extern const FDATA_T test_data_output[TEST_DATA_SIZE];
 extern const FDATA_T test_data_input[TEST_DATA_SIZE*TEST_DATA_STEP*TEST_DATA_DIM];
 
-#endif
+#endif // !TEST_DATA
+

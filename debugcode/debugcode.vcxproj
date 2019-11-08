@@ -20,22 +20,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\activations.h" />
+    <ClInclude Include="src\constants.h" />
     <ClInclude Include="src\fc.h" />
     <ClInclude Include="src\fileOperator.h" />
-    <ClInclude Include="src\floatConstants.h" />
     <ClInclude Include="src\lstm.h" />
-    <ClInclude Include="src\test_data.h" />
+    <ClInclude Include="src\testData.h" />
     <ClInclude Include="src\top.h" />
     <ClInclude Include="src\types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\activations.cpp" />
+    <ClCompile Include="src\constants.cpp" />
     <ClCompile Include="src\fc.cpp" />
     <ClCompile Include="src\fileOperator.cpp" />
-    <ClCompile Include="src\floatConstants.cpp" />
     <ClCompile Include="src\lstm.cpp" />
+    <ClCompile Include="src\testData.cpp" />
     <ClCompile Include="src\testmain.cpp" />
-    <ClCompile Include="src\test_data.cpp" />
     <ClCompile Include="src\top.cpp" />
   </ItemGroup>
   <ItemGroup>

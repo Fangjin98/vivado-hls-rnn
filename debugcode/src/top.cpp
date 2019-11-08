@@ -1,30 +1,24 @@
 #include"top.h"
 #include"fc.h"
 #include"lstm.h"
-#include"floatConstants.h"
+#include"constants.h"
 
 void top(
 	FDATA_T input[LSTM_BATCH_SIZE1*LSTM_INPUT_SIZE1],
 	FDATA_T lstm_prev_hidden_1[LSTM_OUTPUT_SIZE1],
 	FDATA_T lstm_prev_hidden_2[LSTM_OUTPUT_SIZE2],
-	FDATA_T lstm_hidden_1[LSTM_OUTPUT_SIZE1],
-	FDATA_T lstm_hidden_2[LSTM_OUTPUT_SIZE2],
 	FDATA_T &output
 ) {
 	lstm_128(
 		input,
 		lstm_prev_hidden_1,
-		lstm_prev_memory_1,
-		lstm_hidden_1,
-		lstm_memory_1
+		lstm_hidden_1
 	);
 
 	lstm_64(
 		lstm_hidden_1,
 		lstm_prev_hidden_2,
-		lstm_prev_memory_2,
-		lstm_hidden_2,
-		lstm_memory_2
+		lstm_hidden_2
 	);
 
 	FDATA_T fc_input_tmp[FC_INPUT_SIZE1];
