@@ -16,120 +16,72 @@
     <Filter Include="资源文件\weights">
       <UniqueIdentifier>{26569f7e-7680-4088-beaa-56bed2f88d8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\model">
+      <UniqueIdentifier>{2b2f4793-eecd-4b3b-b141-d06933aa8689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\model">
+      <UniqueIdentifier>{d9350a76-0460-45ce-94ff-131393037838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\model\res">
+      <UniqueIdentifier>{2cc099b1-05be-4f5f-bb81-5399f4160b0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\model\res">
+      <UniqueIdentifier>{1ef3a06a-551c-42ee-a472-168b4b8ce41d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\activations.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\lstm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\top.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\types.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\fileOperator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\constants.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\testData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\activations.h">
+      <Filter>头文件\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fc.h">
+      <Filter>头文件\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lstm.h">
+      <Filter>头文件\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\top.h">
+      <Filter>头文件\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\constants.h">
+      <Filter>头文件\model\res</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\activations.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\fc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\lstm.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\testmain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\top.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\fileOperator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\constants.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\testData.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\activations.cpp">
+      <Filter>源文件\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fc.cpp">
+      <Filter>源文件\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lstm.cpp">
+      <Filter>源文件\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\top.cpp">
+      <Filter>源文件\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\constants.cpp">
+      <Filter>源文件\model\res</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\dense1_bias">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\dense1_kernel">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\dense2_bias">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\dense2_kernel">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_bias_c">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_bias_f">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_bias_i">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_bias_o">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_kernel_c">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_kernel_f">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_kernel_i">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm1_kernel_o">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_bias_c">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_bias_f">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_bias_i">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_bias_o">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_kernel_c">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_kernel_f">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_kernel_i">
-      <Filter>资源文件\weights</Filter>
-    </None>
-    <None Include="res\lstm2_kernel_o">
-      <Filter>资源文件\weights</Filter>
-    </None>
     <None Include="res\input">
       <Filter>资源文件</Filter>
     </None>

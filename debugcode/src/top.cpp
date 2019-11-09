@@ -5,27 +5,25 @@
 
 void top(
 	FDATA_T input[LSTM_BATCH_SIZE1*LSTM_INPUT_SIZE1],
-	FDATA_T lstm_prev_hidden_1[LSTM_OUTPUT_SIZE1],
-	FDATA_T lstm_prev_hidden_2[LSTM_OUTPUT_SIZE2],
+	FDATA_T hidden_1[LSTM_OUTPUT_SIZE1],
+	FDATA_T hidden_2[LSTM_OUTPUT_SIZE2],
 	FDATA_T &output
 ) {
+
+	FDATA_T fc_output_feature_map_1[FC_OUTPUT_SIZE1];
+
 	lstm_128(
 		input,
-		lstm_prev_hidden_1,
-		lstm_hidden_1
+		hidden_1
 	);
 
 	lstm_64(
-		lstm_hidden_1,
-		lstm_prev_hidden_2,
-		lstm_hidden_2
+		hidden_1,
+		hidden_2
 	);
 
-	FDATA_T fc_input_tmp[FC_INPUT_SIZE1];
-	load_fc_input(lstm_hidden_2, fc_input_tmp);
-
 	fc_64(
-		fc_input_tmp,
+		hidden_2,
 		fc_output_feature_map_1
 	);
 
@@ -41,6 +39,7 @@ void load_fc_input(
 ) {
 	int offset = LSTM_BATCH_SIZE2 - 1;
 	for (int i = 0; i < LSTM_OUTPUT_SIZE2; i++) {
+#pragma HLS DATAFLOW
 		fc_array[i] = lstm_array[offset*LSTM_OUTPUT_SIZE2 + i];
 	}
 }

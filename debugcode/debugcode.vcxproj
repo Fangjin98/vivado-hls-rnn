@@ -39,27 +39,7 @@
     <ClCompile Include="src\top.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\dense1_bias" />
-    <None Include="res\dense1_kernel" />
-    <None Include="res\dense2_bias" />
-    <None Include="res\dense2_kernel" />
     <None Include="res\input" />
-    <None Include="res\lstm1_bias_c" />
-    <None Include="res\lstm1_bias_f" />
-    <None Include="res\lstm1_bias_i" />
-    <None Include="res\lstm1_bias_o" />
-    <None Include="res\lstm1_kernel_c" />
-    <None Include="res\lstm1_kernel_f" />
-    <None Include="res\lstm1_kernel_i" />
-    <None Include="res\lstm1_kernel_o" />
-    <None Include="res\lstm2_bias_c" />
-    <None Include="res\lstm2_bias_f" />
-    <None Include="res\lstm2_bias_i" />
-    <None Include="res\lstm2_bias_o" />
-    <None Include="res\lstm2_kernel_c" />
-    <None Include="res\lstm2_kernel_f" />
-    <None Include="res\lstm2_kernel_i" />
-    <None Include="res\lstm2_kernel_o" />
     <None Include="res\output" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
