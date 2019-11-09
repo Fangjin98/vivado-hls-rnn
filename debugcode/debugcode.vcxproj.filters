@@ -54,6 +54,9 @@
     <ClInclude Include="src\constants.h">
       <Filter>头文件\model\res</Filter>
     </ClInclude>
+    <ClInclude Include="src\computerFunctions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\testmain.cpp">
@@ -79,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="src\constants.cpp">
       <Filter>源文件\model\res</Filter>
+    </ClCompile>
+    <ClCompile Include="src\computerFunctions.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

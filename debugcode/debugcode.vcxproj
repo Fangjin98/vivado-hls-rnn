@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\activations.h" />
+    <ClInclude Include="src\computerFunctions.h" />
     <ClInclude Include="src\constants.h" />
     <ClInclude Include="src\fc.h" />
     <ClInclude Include="src\fileOperator.h" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\activations.cpp" />
+    <ClCompile Include="src\computerFunctions.cpp" />
     <ClCompile Include="src\constants.cpp" />
     <ClCompile Include="src\fc.cpp" />
     <ClCompile Include="src\fileOperator.cpp" />
