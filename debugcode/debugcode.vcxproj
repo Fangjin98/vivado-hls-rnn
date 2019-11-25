@@ -28,6 +28,7 @@
     <ClInclude Include="src\testData.h" />
     <ClInclude Include="src\top.h" />
     <ClInclude Include="src\types.h" />
+    <ClInclude Include="src\Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\activations.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="src\testData.cpp" />
     <ClCompile Include="src\testmain.cpp" />
     <ClCompile Include="src\top.cpp" />
+    <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\input" />

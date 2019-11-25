@@ -57,6 +57,9 @@
     <ClInclude Include="src\computerFunctions.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\testmain.cpp">
@@ -84,6 +87,9 @@
       <Filter>源文件\model\res</Filter>
     </ClCompile>
     <ClCompile Include="src\computerFunctions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

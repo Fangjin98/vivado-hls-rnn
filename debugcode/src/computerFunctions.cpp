@@ -20,13 +20,12 @@ void matrixMultiplication(
 	int outputDim,
 	FDATA_T * outputVector
 ) {
-	FDATA_T weightMatrixReg[inputDim];
+	FDATA_T weightMatrixReg[128];
 
 	for (int i = 0; i < outputDim; i++) {
 		for (int j = 0; j < inputDim; j++) {
 			weightMatrixReg[j] = weightMatrix[i*inputDim + j];
 		}
-#pragma HLS PIPELINE
 		FDATA_T tmp;
 		vectorMultiplication(
 			weightMatrixReg,

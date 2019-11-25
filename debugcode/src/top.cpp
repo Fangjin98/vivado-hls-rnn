@@ -5,12 +5,12 @@
 
 void top(
 	FDATA_T input[LSTM_BATCH_SIZE1*LSTM_INPUT_SIZE1],
-	FDATA_T hidden_1[LSTM_OUTPUT_SIZE1],
-	FDATA_T hidden_2[LSTM_OUTPUT_SIZE2],
 	FDATA_T &output
 ) {
 
 	FDATA_T fc_output_feature_map_1[FC_OUTPUT_SIZE1];
+	FDATA_T hidden_1[LSTM_BATCH_SIZE1*LSTM_OUTPUT_SIZE1];
+	FDATA_T hidden_2[LSTM_OUTPUT_SIZE2];
 
 	lstm_128(
 		input,

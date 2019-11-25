@@ -6,12 +6,13 @@
 
 
 FDATA_T resTmp[TEST_DATA_SIZE];
-char filename[20] = "float_output";
+char filename[100] = "press2Prediction";
 FDATA_T fc_output_feature_map_2;
 FDATA_T lstm_input_feature_map_1[LSTM_BATCH_SIZE1*LSTM_INPUT_SIZE1];
 int main(){
 
 	//build & inference
+	std::cout<<"start inference"<<std::endl;
 	for (int i = 0; i < TEST_DATA_SIZE; i++) {
 		for (int j = 0; j < LSTM_BATCH_SIZE1; j++) {
 			for (int k = 0; k < LSTM_INPUT_SIZE1; k++) {
@@ -21,10 +22,8 @@ int main(){
 		}
 		
 		top(lstm_input_feature_map_1, 
-			lstm_hidden_1,
-			lstm_hidden_2,
 			fc_output_feature_map_2);
-
+		//std::cout<<fc_output_feature_map_2<<std::endl;
 		resTmp[i] = fc_output_feature_map_2;
 	}
 

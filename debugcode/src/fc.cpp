@@ -25,8 +25,6 @@ fc_64_load_data_to_reg:
 
 
 	for (LDATA_T i = 0;i< FC_OUTPUT_SIZE1;i++) {
-#pragma HLS DATAFLOW
-
 load_kernel:
 		LDATA_T kernelOffset = i * FC_INPUT_SIZE1;
 		for (int j = 0; j < FC_INPUT_SIZE1; j++) {

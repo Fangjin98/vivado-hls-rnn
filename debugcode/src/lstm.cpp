@@ -44,7 +44,8 @@ void lstm_128(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE1; i++) {
 #pragma HLS PIPELINE
-			it_state_reg[i] = m_sigmoid(kernelReg[i]+recurrentKernelReg[i] + lstm_bias_i_1[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_i_1[i];
+			it_state_reg[i] = m_sigmoid(tmp);
 		}
 		
 		matrixMultiplication(
@@ -63,7 +64,8 @@ void lstm_128(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE1; i++) {
 #pragma HLS PIPELINE
-			ft_state_reg[i] = m_sigmoid(kernelReg[i] + recurrentKernelReg[i] + lstm_bias_f_1[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_f_1[i];
+			ft_state_reg[i] = m_sigmoid(tmp);
 		}
 
 		matrixMultiplication(
@@ -82,7 +84,8 @@ void lstm_128(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE1; i++) {
 #pragma HLS PIPELINE
-			ot_state_reg[i] = m_sigmoid(kernelReg[i] + recurrentKernelReg[i] + lstm_bias_o_1[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_o_1[i];
+			ot_state_reg[i] = m_sigmoid(tmp);
 		}
 
 		matrixMultiplication(
@@ -101,7 +104,8 @@ void lstm_128(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE1; i++) {
 #pragma HLS PIPELINE
-			ct_state_reg[i] = m_tanh(kernelReg[i] + recurrentKernelReg[i] + lstm_bias_c_1[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_c_1[i];
+			ct_state_reg[i] = m_tanh(tmp);
 			ct_state_reg[i] =
 				ft_state_reg[i] * prev_memory[i] + it_state_reg[i] * ct_state_reg[i];
 			prev_memory[i] = ct_state_reg[i];
@@ -152,7 +156,8 @@ void lstm_64(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			it_state_reg[i] = m_sigmoid(kernelReg[i]+recurrentKernelReg[i] + lstm_bias_i_2[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_i_2[i];
+			it_state_reg[i] = m_sigmoid(tmp);
 		}
 
 		matrixMultiplication(
@@ -171,7 +176,8 @@ void lstm_64(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			ft_state_reg[i] = m_sigmoid(kernelReg[i]+recurrentKernelReg[i] + lstm_bias_f_2[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_f_2[i];
+			ft_state_reg[i] = m_sigmoid(tmp);
 		}
 
 		matrixMultiplication(
@@ -190,7 +196,8 @@ void lstm_64(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			ot_state_reg[i] = m_sigmoid(kernelReg[i] + recurrentKernelReg[i] + lstm_bias_o_2[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_o_2[i];
+			ot_state_reg[i] = m_sigmoid(tmp);
 		}
 
 		matrixMultiplication(
@@ -209,7 +216,8 @@ void lstm_64(
 		);
 		for (int i = 0; i < LSTM_OUTPUT_SIZE2; i++) {
 #pragma HLS PIPELINE
-			ct_state_reg[i] = m_tanh(kernelReg[i] + recurrentKernelReg[i] + lstm_bias_c_2[i]);
+			FDATA_T tmp = kernelReg[i] + recurrentKernelReg[i] + lstm_bias_c_2[i];
+			ct_state_reg[i] = m_tanh(tmp);
 			ct_state_reg[i] =
 				ft_state_reg[i] * prev_memory[i] + it_state_reg[i] * ct_state_reg[i];
 
